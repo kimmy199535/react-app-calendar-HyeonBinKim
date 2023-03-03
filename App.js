@@ -1,11 +1,16 @@
+// 외부 모듈
+import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+
+// 내부 모듈
+import BottomNavigation from "./navigation/bottomNavigation";
 
 function App() {
   return (
     <View style={styles.container}>
-      <Text>Hey</Text>
       <StatusBar style="auto" />
+      <BottomNavigation />
     </View>
   );
 }
@@ -16,7 +21,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
