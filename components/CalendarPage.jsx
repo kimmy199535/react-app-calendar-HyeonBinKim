@@ -19,7 +19,7 @@ function CalendarPage() {
   const [year, setYear] = useState(YEAR);
   const [date, setDate] = useState(DAY);
 
-  const onPressNextMonth = (month) => {
+  const onPressNextMonth = () => {
     if (month === 12) {
       setYear((prevYear) => prevYear + 1);
       setMonth(1);
@@ -28,7 +28,7 @@ function CalendarPage() {
     }
   };
 
-  const onPressPrevMonth = (month) => {
+  const onPressPrevMonth = () => {
     if (month === 1) {
       setYear((prevYear) => prevYear - 1);
       setMonth(12);
@@ -44,7 +44,12 @@ function CalendarPage() {
 
   return (
     <View style={style.calendarContainer}>
-      <Header month={month} year={year} />
+      <Header
+        month={month}
+        year={year}
+        onPressNextMonth={onPressNextMonth}
+        onPressPrevMonth={onPressPrevMonth}
+      />
       <Body month={month} year={year} date={date} />
     </View>
   );
@@ -56,6 +61,6 @@ const style = StyleSheet.create({
   calendarContainer: {
     width: "100%",
     backgroundColor: "white",
-    paddingHorizontal: 16,
+    paddingHorizontal: 20,
   },
 });

@@ -5,15 +5,30 @@ import { Ionicons, AntDesign } from "@expo/vector-icons";
 
 // 내부 모듈
 
-function Header() {
+function Header(props) {
+  const months = [
+    "",
+    "January",
+    "Febrary",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   return (
     <View style={style.headerContainer}>
-      <Pressable>
+      <Pressable onPress={props.onPressPrevMonth}>
         <AntDesign name="left" size={24} color="skyblue" />
       </Pressable>
-      <Text style={style.month}>Month</Text>
-      <Text style={style.year}>Year</Text>
-      <Pressable>
+      <Text style={style.text}>{months[props.month]}</Text>
+      <Text style={style.text}>{props.year}</Text>
+      <Pressable onPress={props.onPressNextMonth}>
         <AntDesign name="right" size={24} color="skyblue" />
       </Pressable>
     </View>
@@ -28,10 +43,7 @@ const style = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  month: {
-    fontSize: 20,
-  },
-  year: {
+  text: {
     fontSize: 20,
   },
 });
