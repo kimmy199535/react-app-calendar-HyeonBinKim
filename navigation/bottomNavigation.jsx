@@ -2,7 +2,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons, Feather } from "@expo/vector-icons";
+import { Ionicons, FontAwesome5, SimpleLineIcons } from "@expo/vector-icons";
 
 // 내부 모듈
 import Home from "../screens/Home";
@@ -28,9 +28,9 @@ function BottomNavigation() {
                   <Ionicons name="md-calendar-sharp" size={24} color={color} />
                 );
               case "Library":
-                return <Ionicons name="barbell" size={24} color={color} />;
+                return <FontAwesome5 name="dumbbell" size={21} color={color} />;
               case "My Page":
-                return <Feather name="user" size={24} color={color} />;
+                return <SimpleLineIcons name="user" size={21} color={color} />;
             }
           },
           tabBarActiveTintColor: "black",

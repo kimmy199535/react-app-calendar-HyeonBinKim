@@ -26,8 +26,10 @@ function Header(props) {
       <Pressable onPress={props.onPressPrevMonth}>
         <AntDesign name="left" size={24} color="skyblue" />
       </Pressable>
-      <Text style={style.text}>{months[props.month]}</Text>
-      <Text style={style.text}>{props.year}</Text>
+      <View style={{ flexDirection: "row", gap: 15 }}>
+        <Text style={style.text}>{months[props.month]}</Text>
+        <Text style={style.text}>{props.year}</Text>
+      </View>
       <Pressable onPress={props.onPressNextMonth}>
         <AntDesign name="right" size={24} color="skyblue" />
       </Pressable>
@@ -39,6 +41,7 @@ export default Header;
 
 const style = StyleSheet.create({
   headerContainer: {
+    marginTop: 60,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
