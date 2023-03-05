@@ -43,7 +43,12 @@ function CalendarPage() {
         />
       </View>
       <View>
-        <Body month={month} year={year} />
+        <Body
+          month={month}
+          year={year}
+          onPressNextMonth={onPressNextMonth}
+          onPressPrevMonth={onPressPrevMonth}
+        />
       </View>
     </View>
   );

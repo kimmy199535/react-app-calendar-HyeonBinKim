@@ -1,11 +1,13 @@
 // 외부 모듈
 import React, { useEffect, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import GestureRecognizer from "react-native-swipe-gestures";
 
 // 내부 모듈
 
 function Body(props) {
-  const { year, month } = props;
+  const { year, month, onPressNextMonth, onPressPrevMonth } = props;
+  console.log("dd", onPressNextMonth);
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const [totalDate, setTotalDate] = useState([]);
 
@@ -66,6 +68,14 @@ function Body(props) {
     setSelected({ state: "", year, month, date });
   };
 
+  const swipeLeft = () => {
+    onPressNextMonth(month);
+  };
+
+  const swipeRight = () => {
+    onPressPrevMonth(month);
+  };
+
   useEffect(() => {
     setTotalDate(changeDate(7));
   }, []);
@@ -75,7 +85,11 @@ function Body(props) {
   }, [month]);
 
   return (
-    <View>
+    <GestureRecognizer
+      onSwipeLeft={swipeLeft}
+      onSwipeRight={swipeRight}
+      config={{ velocityThreshold: 0.1 }}
+    >
       <View style={style.dayContainer}>
         {daysOfWeek.map((day, i) => (
           <View key={i}>
@@ -113,7 +127,7 @@ function Body(props) {
           </View>
         ))}
       </View>
-    </View>
+    </GestureRecognizer>
   );
 }
 
