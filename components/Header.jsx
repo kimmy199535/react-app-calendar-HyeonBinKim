@@ -40,8 +40,9 @@ export default Header;
 const style = StyleSheet.create({
   headerContainer: {
     flexDirection: "row",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
     alignItems: "center",
+    paddingHorizontal: 20,
   },
   text: {
     fontSize: 20,

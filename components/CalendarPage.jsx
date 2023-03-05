@@ -36,29 +36,23 @@ function CalendarPage() {
     }
   };
 
-  const onPressSelectedDate = (year, month) => {
-    setYear(year);
-    setMonth(month);
-  };
-
   return (
-    <View style={style.calendarContainer}>
-      <Header
-        month={month}
-        year={year}
-        onPressNextMonth={onPressNextMonth}
-        onPressPrevMonth={onPressPrevMonth}
-      />
-      <Body month={month} year={year} date={date} today={today} />
+    <View>
+      <View>
+        <Header
+          month={month}
+          year={year}
+          onPressNextMonth={onPressNextMonth}
+          onPressPrevMonth={onPressPrevMonth}
+        />
+      </View>
+      <View>
+        <Body month={month} year={year} date={date} today={today} />
+      </View>
     </View>
   );
 }
 
 export default CalendarPage;
 
-const style = StyleSheet.create({
-  calendarContainer: {
-    width: "100%",
-    backgroundColor: "white",
-  },
-});
+const style = StyleSheet.create({});
