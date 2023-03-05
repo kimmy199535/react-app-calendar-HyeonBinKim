@@ -19,6 +19,8 @@ function Body(props) {
   // 이번달과 다음달의 1일
   const thisMonthFirstDate = totalDate.indexOf(1);
   const nextMonthFirstDate = totalDate.indexOf(1, 7);
+  console.log(month, "thisMonthFirstDate", thisMonthFirstDate);
+  console.log(month, "nextMonthFirstDate", nextMonthFirstDate);
 
   function changeDate() {
     // 저번달과 이번달의 마지막 날
@@ -87,7 +89,8 @@ function Body(props) {
             <Pressable
               onPress={() => handleSelectDate({ year, month, date }, i)}
               style={
-                i >= nextMonthFirstDate || i < thisMonthFirstDate
+                (i >= nextMonthFirstDate && nextMonthFirstDate !== -1) ||
+                i < thisMonthFirstDate
                   ? null
                   : selected.date === date &&
                     selected.month === month &&
@@ -97,13 +100,12 @@ function Body(props) {
               }
             >
               <Text
-                style={[
-                  i >= nextMonthFirstDate
+                style={
+                  (i >= nextMonthFirstDate && nextMonthFirstDate !== -1) ||
+                  i < thisMonthFirstDate
                     ? style.otherDate
-                    : i < thisMonthFirstDate
-                    ? style.otherDate
-                    : style.currDate,
-                ]}
+                    : style.currDate
+                }
               >
                 {date}
               </Text>
@@ -153,7 +155,7 @@ const style = StyleSheet.create({
 const colorOfDay = (day) =>
   StyleSheet.create({
     daysOfWeek: {
-      color: day === "SUN" ? "red" : day === "SAT" ? "blue" : "grey",
+      color: day === "SUN" ? "red" : day === "SAT" ? "blue" : "black",
       fontSize: 16,
     },
   });
