@@ -11,9 +11,6 @@ function CalendarPage() {
   const YEAR = DATE.getFullYear();
   const MONTH = DATE.getMonth() + 1;
   const DAY = DATE.getDate();
-  const today = { year: YEAR, month: MONTH, date: DAY };
-
-  const DaysOfWeek = ["SUN", "MON", "TUE", "WED", "THUR", "FRI", "SAT"]; //일주일
 
   const [month, setMonth] = useState(MONTH);
   const [year, setYear] = useState(YEAR);
@@ -61,6 +58,5 @@ const style = StyleSheet.create({
   calendarContainer: {
     width: "100%",
     backgroundColor: "white",
-    paddingHorizontal: 20,
   },
 });
