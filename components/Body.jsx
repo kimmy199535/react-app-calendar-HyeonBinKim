@@ -55,7 +55,13 @@ function Body(props) {
     return prevDates.concat(presentDates, nextDates);
   }
 
-  const handleSelectDate = ({ year, month, date }) => {
+  const handleSelectDate = ({ year, month, date }, i) => {
+    if (i >= nextMonthFirstDate) {
+      return null;
+    }
+    if (i < thisMonthFirstDate) {
+      return null;
+    }
     setSelected({ state: "", year, month, date });
   };
 
@@ -78,18 +84,30 @@ function Body(props) {
       </View>
       <View style={style.dateContainer}>
         {totalDate.map((date, i) => (
-          <View style={style.eachDate} key={i}>
+          <View style={style.allDate} key={i}>
             <Pressable
-              onPress={() => handleSelectDate({ year, month, date })}
+              onPress={() => handleSelectDate({ year, month, date }, i)}
               style={
-                selected.date === date &&
-                selected.month === month &&
-                selected.year === year
+                i >= nextMonthFirstDate || i < thisMonthFirstDate
+                  ? null
+                  : selected.date === date &&
+                    selected.month === month &&
+                    selected.year === year
                   ? style.selectedDate
                   : null
               }
             >
-              <Text>{date}</Text>
+              <Text
+                style={[
+                  i >= nextMonthFirstDate
+                    ? style.otherDate
+                    : i < thisMonthFirstDate
+                    ? style.otherDate
+                    : style.currDate,
+                ]}
+              >
+                {date}
+              </Text>
             </Pressable>
           </View>
         ))}
@@ -111,11 +129,15 @@ const style = StyleSheet.create({
     flexWrap: "wrap",
     marginTop: 20,
   },
-  eachDate: {
+  allDate: {
     width: "14.2%",
-    height: 30,
+    height: 40,
     justifyContent: "center",
     alignItems: "center",
+  },
+  currDate: {},
+  otherDate: {
+    color: "lightgrey",
   },
   selectedDate: {
     width: 30,
