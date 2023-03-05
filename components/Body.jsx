@@ -10,6 +10,13 @@ function Body(props) {
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const [totalDate, setTotalDate] = useState([]);
 
+  const [selected, setSelected] = useState({
+    state: "",
+    year: 0,
+    month: 0,
+    date: 0,
+  });
+
   // 이번달과 다음달의 1일
   const thisMonthFirstDate = totalDate.indexOf(1);
   const nextMonthFirstDate = totalDate.indexOf(1, 7);
@@ -48,6 +55,10 @@ function Body(props) {
     return prevDates.concat(presentDates, nextDates);
   }
 
+  const handleSelectDate = ({ year, month, date }) => {
+    setSelected({ state: "", year, month, date });
+  };
+
   useEffect(() => {
     setTotalDate(changeDate(7));
   }, []);
@@ -68,7 +79,18 @@ function Body(props) {
       <View style={style.dateContainer}>
         {totalDate.map((date, i) => (
           <View style={style.eachDate} key={i}>
-            <Text>{date}</Text>
+            <Pressable
+              onPress={() => handleSelectDate({ year, month, date })}
+              style={
+                selected.date === date &&
+                selected.month === month &&
+                selected.year === year
+                  ? style.selectedDate
+                  : null
+              }
+            >
+              <Text>{date}</Text>
+            </Pressable>
           </View>
         ))}
       </View>
@@ -92,6 +114,16 @@ const style = StyleSheet.create({
   eachDate: {
     width: "14.2%",
     height: 30,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  selectedDate: {
+    width: 30,
+    height: 30,
+    backgroundColor: "white",
+    borderWidth: 1,
+    borderRadius: 20,
+    borderColor: "blue",
     justifyContent: "center",
     alignItems: "center",
   },
