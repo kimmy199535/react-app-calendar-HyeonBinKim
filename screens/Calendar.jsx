@@ -1,6 +1,6 @@
 // 외부 모듈
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 // 내부 모둘
 import CalendarPage from "../components/CalendarPage";

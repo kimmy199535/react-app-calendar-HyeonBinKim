@@ -1,7 +1,7 @@
 // 외부 모듈
-import React, { useState } from "react";
+import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { Ionicons, AntDesign } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 
 // 내부 모듈
 

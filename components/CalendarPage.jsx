@@ -10,13 +10,9 @@ function CalendarPage() {
   const DATE = new Date();
   const YEAR = DATE.getFullYear();
   const MONTH = DATE.getMonth() + 1;
-  const DAY = DATE.getDate();
-
-  let today = new Date();
 
   const [month, setMonth] = useState(MONTH);
   const [year, setYear] = useState(YEAR);
-  const [date, setDate] = useState(DAY);
 
   const onPressNextMonth = () => {
     if (month === 12) {
@@ -47,7 +43,7 @@ function CalendarPage() {
         />
       </View>
       <View>
-        <Body month={month} year={year} date={date} today={today} />
+        <Body month={month} year={year} />
       </View>
     </View>
   );

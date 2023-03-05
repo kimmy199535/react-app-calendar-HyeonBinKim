@@ -1,12 +1,11 @@
 // 외부 모듈
 import React, { useEffect, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { Ionicons, AntDesign } from "@expo/vector-icons";
 
 // 내부 모듈
 
 function Body(props) {
-  const { year, month, date, today } = props;
+  const { year, month } = props;
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const [totalDate, setTotalDate] = useState([]);
 
