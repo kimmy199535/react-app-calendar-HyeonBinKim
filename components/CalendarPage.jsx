@@ -12,6 +12,8 @@ function CalendarPage() {
   const MONTH = DATE.getMonth() + 1;
   const DAY = DATE.getDate();
 
+  let today = new Date();
+
   const [month, setMonth] = useState(MONTH);
   const [year, setYear] = useState(YEAR);
   const [date, setDate] = useState(DAY);
@@ -47,7 +49,7 @@ function CalendarPage() {
         onPressNextMonth={onPressNextMonth}
         onPressPrevMonth={onPressPrevMonth}
       />
-      <Body month={month} year={year} date={date} />
+      <Body month={month} year={year} date={date} today={today} />
     </View>
   );
 }
