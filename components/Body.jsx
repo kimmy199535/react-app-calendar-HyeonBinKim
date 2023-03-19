@@ -7,7 +7,6 @@ import GestureRecognizer from "react-native-swipe-gestures";
 
 function Body(props) {
   const { year, month, onPressNextMonth, onPressPrevMonth } = props;
-  console.log("dd", onPressNextMonth);
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const [totalDate, setTotalDate] = useState([]);
 
@@ -21,8 +20,8 @@ function Body(props) {
   // 이번달과 다음달의 1일
   const thisMonthFirstDate = totalDate.indexOf(1);
   const nextMonthFirstDate = totalDate.indexOf(1, 7);
-  console.log(month, "thisMonthFirstDate", thisMonthFirstDate);
-  console.log(month, "nextMonthFirstDate", nextMonthFirstDate);
+  // console.log(month, "thisMonthFirstDate", thisMonthFirstDate);
+  // console.log(month, "nextMonthFirstDate", nextMonthFirstDate);
 
   function changeDate() {
     // 저번달과 이번달의 마지막 날
@@ -58,8 +57,9 @@ function Body(props) {
     return prevDates.concat(presentDates, nextDates);
   }
 
+  // 여기가 수정할 부분
   const handleSelectDate = ({ year, month, date }, i) => {
-    if (i >= nextMonthFirstDate) {
+    if (i >= nextMonthFirstDate && nextMonthFirstDate !== -1) {
       return null;
     }
     if (i < thisMonthFirstDate) {
@@ -103,6 +103,7 @@ function Body(props) {
             <Pressable
               onPress={() => handleSelectDate({ year, month, date }, i)}
               style={
+                // 여기 조건 위로 보내기
                 (i >= nextMonthFirstDate && nextMonthFirstDate !== -1) ||
                 i < thisMonthFirstDate
                   ? null
