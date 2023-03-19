@@ -21,6 +21,7 @@ function Header(props) {
     "November",
     "December",
   ];
+  // 공백이 있는 이유는 인덱스는 0부터 시작하지만, 월을 표시하기 위해 +1이 되어있기 때문에
   return (
     <View style={style.headerContainer}>
       <Pressable onPress={props.onPressPrevMonth}>
